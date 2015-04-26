@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+	<!-- Le styles -->
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/loader.css">
+
+
+
+
+</head>
+<body ng-app="commentsModule" ng-controller="IndexController">
+
+<nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#/">AngularJS <span class="badge">{{posts.length}}</span></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true">
+          <ul class="nav navbar-nav">
+            
+            <li><a href="../Angularjs1/index.html#/">Todo</a>
+
+            </li>
+            
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container" ng-view></div>
+
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <!--<script type="text/javascript" src="lib/angular.min.js"></script>-->
+	  <script src="https://code.angularjs.org/1.3.1/angular-route.min.js"></script>
+    <script src="https://code.angularjs.org/1.3.15/angular-resource.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/service/posts.js"></script>  
+    <script src="js/controller/comments.js"></script>
+    <script src="js/controller/posts.js"></script>
+    <script src="js/controller/index.js"></script>
+    <script src="js/directive/comment.js"></script>
+    <script src="js/directive/loadercss.js"></script>
+    <script src="js/angular-css.js"></script>
+
+
+       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</body>
+</html> 
+
+
+
+
+
+

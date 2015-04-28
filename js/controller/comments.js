@@ -1,13 +1,14 @@
-app.controller('CommentsController', ['$scope','PostFactory','$routeParams', function ($scope, PostFactory, $routeParams){
+app.controller('CommentsController', ['$scope','ArticleFactory','$routeParams', function ($scope, ArticleFactory, $routeParams){
 	
 	$scope.loading = true;
 	$scope.newComment= {};
 
-	PostFactory.getPost($routeParams.id).then(function(post) {
-		console.log($routeParams.id);
+	ArticleFactory.getArticle($routeParams.id).then(function(article) {
+		console.log(article.commentaires[0].commentaire);
 		$scope.loading = false;
-		$scope.title = post.name;
-		$scope.comments = post.comments;
+		$scope.title = article.titreArticle;
+		$scope.picture = article.picture;
+		$scope.comments = article.commentaires;
 	},function(msg) {
 		alert(msg);
 	});
@@ -16,7 +17,7 @@ $scope.addComment = function() {
 	$scope.comments.push($scope.newComment);
 
 
-	PostFactory.add($scope.newComment, $routeParams.id).then(function () {
+	ArticleFactory.add($scope.newComment, $routeParams.id).then(function () {
 
 	}, function (argument) {
 		alert('Votre message n\'a pas pu être sauvegardé');

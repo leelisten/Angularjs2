@@ -1,40 +1,41 @@
-app.factory('PostFactory', function($http, $q, $timeout){
+app.factory('ArticleFactory', function($http, $q, $timeout){
 
 var factory = {
-		posts : false,
-		getPosts : function(){
+		articles : false,
+		getArticles : function(){
 			var deferred = $q.defer();
-			if (factory.posts !== false) {
-				deferred.resolve(factory.posts);
+			if (factory.articles !== false) {
+				deferred.resolve(factory.articles);
 			}
 			else{
-				$http.get('https://api.parse.com/1/classes/post', {	
+				$http.get('https://api.parse.com/1/classes/Articles', {	
 					headers: { 
 						'X-Parse-Application-Id':'feKJSdbBI8qHeLlTUWWW5wfU7lNPkTwfbwMxTi0s', 
 						'X-Parse-REST-API-Key':'Y6UPKjq0eEba1Hb9Fjpo3DLOOTe95aup2ucTJR2c'
 					}
 					})
 				.success(function(data, status){
-					factory.posts = data.results;
+					factory.articles = data.results;
 					$timeout(function(){
-						deferred.resolve(factory.posts);
+						deferred.resolve(factory.articles);
 					}, 2000)	
 				}).error(function(data, status){
 					deferred.reject('impossible de recupérer les articles')
 				});
 			}
 			return deferred.promise;
-			//return factory.posts;
+			//return factory.articles;
 		},
-		getPost : function(id){
-			console.log('dans services ' + id);
+		getArticle : function(id){
+			//console.log('dans services ' + id);
 			var deferred = $q.defer();
-			var post = {};
-			var posts = factory.getPosts().then(function(posts) {
-				angular.forEach(posts, function(value, key) {
-					if (value.objectId == id) {post = value}
+			var article = {};
+			var articles = factory.getArticles().then(function(articles) {
+				angular.forEach(articles, function(value, key) {
+					console.log('value.objectId : ' + value.objectId + 'id :' + id);
+					if (value.objectId == id) {article = value}
 				});
-				deferred.resolve(post);
+				deferred.resolve(article);
 			}, function(msg) {
 				deferred.reject(msg);
 			});
@@ -43,7 +44,7 @@ var factory = {
 		add : function(comment, id) {
 			var deferred = $q.defer();
 			console.log(comment);
-			$http.post('https://api.parse.com/1/classes/post/'+ id,comment,{
+			$http.post('https://api.parse.com/1/classes/Articles/'+ id + '/commentaire',comment,{
 				headers: { 
 					'X-Parse-Application-Id':'feKJSdbBI8qHeLlTUWWW5wfU7lNPkTwfbwMxTi0s', 
 					'X-Parse-REST-API-Key':'Y6UPKjq0eEba1Hb9Fjpo3DLOOTe95aup2ucTJR2c',
@@ -51,9 +52,9 @@ var factory = {
 				}
 			})
 				.success(function(data, status){
-					//factory.posts = data.results;
+					//factory.articles = data.results;
 					$timeout(function(){
-						deferred.resolve(factory.posts);
+						deferred.resolve(factory.articles);
 					}, 2000)	
 				}).error(function(data, status){
 					deferred.reject('impossible d\'enregistrer les articles')

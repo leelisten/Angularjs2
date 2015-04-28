@@ -1,9 +1,9 @@
-app.controller('PostsController', ['$scope','PostFactory', 'myService', 'myFactory', 'myProvider', function ($scope, PostFactory, myService, myFactory, myProvider ) {
+app.controller('ArticlesController', ['$scope','ArticleFactory', 'myService', 'myFactory', 'myProvider', function ($scope, ArticleFactory, myService, myFactory, myProvider ) {
 
 	$scope.loading = true;
-	$scope.posts = PostFactory.getPosts().then(function(posts){
+	$scope.articles = ArticleFactory.getArticles().then(function(articles){
 		$scope.loading = false;
-		$scope.posts = posts;
+		$scope.articles = articles;
 	},
 	function(msg){
 		alert(msg);

@@ -1,36 +1,37 @@
 <div ng-show="loading"><ng-loader ></ng-loader></div>
-<div ng-hide="loading" class="container-fluid">
-	<div ng-controller="CommentsController" class="row">	
-		<ol class="breadcrumb">
-		  <li><a href="#/">Articles</a></li>
-		  <li class="active">{{title}}</li>
-		</ol>
+	<div ng-hide="loading" class="container-fluid">
+		<div ng-controller="CommentsController" class="row">	
+			<ol class="breadcrumb">
+			  <li><a href="#/">Articles</a></li>
+			  <li class="active">{{title}}</li>
+			</ol>
 
-		<h1>{{title}}</h1>
-			
-				<p> <img src="http://lorempicsum.com/simpsons/627/200/{{$index + 1}}" width="100%"/></p>
-				<div ng-repeat="comment in comments | filter : query | orderBy: order " class="col-md-8">
-					<div ng-comment></div>
-				</div>
+			<h1>{{title}}</h1>
+				
+					
+
+					<p> <img src="{{picture}}627/200/{{$index + 1}}" width="100%"/></p>
+					<div ng-repeat="comment in comments"  class="">
+						<ng-comment comment="comment"></ng-comment>
+					</div>
+		<form ng-submit="addComment()">
+			<div class="form-group">
+				<label for=""></label>
+				<input type="text" class="form-control" placeholder="username" ng-model="newComment.username">
+			</div>
+			<div class="form-group">
+				<label for=""></label>
+				<input type="text" class="form-control" placeholder="city" ng-model="newComment.city">
+			</div>
+			<div class="form-group">
+				<label for=""></label>
+				<input type="text" class="form-control" placeholder="email" ng-model="newComment.email">
+			</div>
+			<div class="form-group">
+				<label for=""></label>
+				<textarea class="form-control" rows="3" ng-model="newComment.content" ></textarea>
+			</div>
+			<button type="submit" class="btn btn-default btn-sm ng-binding">Ajouter</button>
+		</form>	
 	</div>
-
-	<form ng-submit="addComment()">
-		<div class="form-group">
-			<label for=""></label>
-			<input type="text" class="form-control" placeholder="username" ng-model="newComment.username">
-		</div>
-		<div class="form-group">
-			<label for=""></label>
-			<input type="text" class="form-control" placeholder="city" ng-model="newComment.city">
-		</div>
-		<div class="form-group">
-			<label for=""></label>
-			<input type="text" class="form-control" placeholder="email" ng-model="newComment.email">
-		</div>
-		<div class="form-group">
-			<label for=""></label>
-			<textarea class="form-control" rows="3" ng-model="newComment.content" ></textarea>
-		</div>
-		<button type="submit" class="btn btn-default btn-sm ng-binding">Ajouter</button>
-	</form>	
 </div>

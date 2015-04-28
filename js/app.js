@@ -2,7 +2,7 @@ var app = angular.module('commentsModule', ['ngRoute','door3.css','ngResource'] 
 
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
-		.when('/', {templateUrl: 'partials/home.html', controller:'PostsController'})
+		.when('/', {templateUrl: 'partials/home.html', controller:'ArticlesController'})
 		.when('/comments/:id', {templateUrl: 'partials/comments.html', controller:'CommentsController'})
 		.otherwise({ redirectTo: '/' });
 }]);

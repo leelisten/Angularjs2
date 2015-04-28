@@ -1,6 +1,9 @@
 app.directive('ngComment', function() {
 	return {
-		restrict : 'A',
-		templateUrl: 'partials/_comment.html'
+		scope :{
+			comment :'='
+		},
+		restrict : 'E',
+		templateUrl: 'partials/comment.html'
 	};
 });

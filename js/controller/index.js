@@ -1,6 +1,6 @@
-app.controller('IndexController', ['$scope', 'PostFactory', function($scope, PostFactory){
-	$scope.posts = PostFactory.getPosts().then(function(posts){
-		$scope.posts = posts;
+app.controller('IndexController', ['$scope', 'ArticleFactory', function($scope, ArticleFactory){
+	$scope.articles = ArticleFactory.getArticles().then(function(articles){
+		$scope.articles = articles;
 	},
 	function(msg){
 		alert(msg);
